@@ -15,6 +15,11 @@ class model_input(BaseModel):
 
 model = pickle.load(open('model/expense_model.pkl', 'rb'))
 
+# Defining path operation for root endpoint
+@app.get('/')
+def main():
+    return {'message': 'Welcome to Render Fast Api'}
+
 @app.post('/prediction')
 def getPrediction(input_parameters : model_input):
     input_data = input_parameters.json()
